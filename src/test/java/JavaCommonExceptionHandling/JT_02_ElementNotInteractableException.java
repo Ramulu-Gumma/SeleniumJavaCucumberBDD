@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 //What is ElementNotInteractableException in Selenium?
 //ElementNotInteractableException occurs when an element is present in the DOM but is not interactable, meaning Selenium cannot perform actions like clicking or typing on it.
-//
+
 //Common Causes of ElementNotInteractableException:
 //Element is hidden (e.g., inside a collapsed dropdown, modal, or with display: none; CSS).
 //Element is disabled (e.g., a grayed-out button).

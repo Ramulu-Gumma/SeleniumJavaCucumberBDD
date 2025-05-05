@@ -5,7 +5,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
-
+//Beifits:
+//✅ Simplifies test execution with powerful annotations.
+//✅ Parallel execution speeds up testing.
+//✅ Detailed reporting with logs and reports.
+//✅ Supports parameterized tests using @DataProvider.
+//✅ Works well with Selenium, API testing, and CI/CD tools like Jenkins
 //BeforeSuite: Start the test environment, initialize any test data or start the server.
 //BeforeClass: Open the browser (initialize WebDriver).
 //BeforeMethod: Navigate to the homepage of the website.
@@ -21,6 +26,9 @@ import org.testng.annotations.*;
 //priority:Use when you need to specify the order in which tests should run.
 //groups:Use it to organize tests into logical groups (e.g., functional, regression) and execute a specific group.
 //timeOut:Use it to ensure that tests complete within a certain time frame, especially for performance tests.
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 
 public class TT_01_Annotations {
 

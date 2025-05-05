@@ -10,7 +10,7 @@ public class JT_07_HashTable {
 //	✅ No Null Keys or Values: Unlike HashMap, it does not allow null keys or values.
 //	✅ Fast Lookups: Uses O(1) complexity for searching and inserting.
 //	✅ Legacy Class: Introduced before HashMap, but still useful in multi-threaded applications.
-
+//Hash table is used in inventory module to check the glass stsock availability
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		//Inventory Management System

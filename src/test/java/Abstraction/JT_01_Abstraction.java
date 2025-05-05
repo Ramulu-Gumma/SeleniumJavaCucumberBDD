@@ -1,12 +1,6 @@
 package Abstraction;
 
-//Key Points of Abstraction
-//Hides Complexity: Only the essential features are exposed, and unnecessary details are hidden.
-//Provides a Clear Interface: It defines a set of methods that the child classes must implement.
-//Improves Code Reusability: By using abstraction, common functionality is defined at a higher level, which can be inherited or implemented by various classes.
-//Increases Maintainability: Changes to the implementation of a class do not affect the users of the class as long as the interface remains the same.
 
-//Abstract class - Machine (Abstraction)
 abstract class Machine {
 	// Common behavior (implemented)
 	void start() {

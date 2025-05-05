@@ -1,26 +1,27 @@
 package SeleniumTopics;
 
-import java.util.concurrent.TimeUnit;
-
+import java.time.Duration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 public class TC_001_Locators {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
-		System.setProperty("webdriver.chrome.driver", "chromepath");
+		WebDriverManager.chromedriver().setup();
 		WebDriver driver = new ChromeDriver();
-		driver.get("");
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		driver.get("https://www.amazon.in/"); 
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
 		// Locate an element using ID (Assuming the element has id="username")
-		WebElement usernameField = driver.findElement(By.id("username"));
+		WebElement usernameField = driver.findElement(By.id("//input[@id='twotabsearchtextbox']"));
 		// Interact with the element (enter text into a username field)
-		usernameField.sendKeys("testUser");
+		usernameField.sendKeys("one plus5g phone");
 
 		// Locate an element using Name (Assuming the element has name="email")
 		WebElement emailField = driver.findElement(By.name("email"));
@@ -59,15 +60,14 @@ public class TC_001_Locators {
 		//Locating by Class	
 		WebElement byClass = driver.findElement(By.cssSelector(".inputField"));
 		byClass.click();
-		
+
 		//Locating by Tag Name
 		WebElement byTagName = driver.findElement(By.cssSelector("p"));
 		byTagName.click();
-		
+
 		//Locating by Attribute
 		WebElement byAttribute = driver.findElement(By.cssSelector("input[type='password']"));
 		byAttribute.click();
-		
 
 		// Locate an input field by XPath (Assuming the field has name='username')
 		WebElement username = driver.findElement(By.xpath("//input[@name='username']"));

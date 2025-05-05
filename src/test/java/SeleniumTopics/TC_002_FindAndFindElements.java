@@ -1,21 +1,22 @@
 package SeleniumTopics;
 
+import java.time.Duration;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 public class TC_002_FindAndFindElements {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		
-		System.setProperty("webdriver.chrome.driver", "chromepath");
+		WebDriverManager.chromedriver().setup();
 		WebDriver driver = new ChromeDriver();
-		driver.get("");
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login"); 
 		driver.manage().window().maximize();
 		
 		// Locate the Username field using findElement and enter text

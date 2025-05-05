@@ -1,13 +1,12 @@
 package Polymorphism;
 
 //Key Points of Method Overriding:
-//
+
 //Same Method Signature: The overridden method in the child class must have the same name, return type, and parameters as the method in the parent class.
 //Dynamic (Runtime) Polymorphism: Overriding is resolved at runtime (dynamic polymorphism), unlike method overloading, which is resolved at compile time.
 //@Override Annotation: It’s a good practice to use the @Override annotation to indicate that a method is intended to override a method in the superclass.
 //Method Inheritance: The method in the parent class is inherited by the subclass, and the subclass can override it to provide its own functionality.
 //Access Modifiers: The access level of the overridden method in the subclass should be the same or more permissive than the method in the parent class.
-//
 
 
 //Parent class representing a general Glass Machine

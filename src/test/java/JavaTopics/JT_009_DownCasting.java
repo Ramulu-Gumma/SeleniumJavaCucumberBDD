@@ -22,6 +22,7 @@ class CuttingMachine extends FloatMachine {
 	}
 }
 
+
 //Main class
 public class JT_009_DownCasting {
 

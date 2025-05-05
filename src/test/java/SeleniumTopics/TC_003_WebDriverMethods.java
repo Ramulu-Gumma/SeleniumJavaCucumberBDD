@@ -1,19 +1,21 @@
 package SeleniumTopics;
 
+import java.time.Duration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 public class TC_003_WebDriverMethods {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		
-		System.setProperty("webdriver.chrome.driver", "chromepath");
+		WebDriverManager.chromedriver().setup();
 		WebDriver driver = new ChromeDriver();
-		//1. get()--Opens a URL in the browser.
-		driver.get("https://www.google.com");
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(100));
+		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login"); 
 		driver.manage().window().maximize();
 		
 		//2. getTitle()--Returns the title of the current page.
@@ -40,7 +42,6 @@ public class TC_003_WebDriverMethods {
 		WebElement link = driver.findElement(By.id("myLink"));
 		String linkHref = link.getAttribute("href");
 		System.out.println("Link URL: " + linkHref);
-		
 		
 		//7. switchTo()--Switches the context to a different frame, alert, or window.
 		driver.switchTo().frame("frameName");

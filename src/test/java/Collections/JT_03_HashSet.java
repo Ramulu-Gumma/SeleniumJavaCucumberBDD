@@ -11,6 +11,7 @@ public class JT_03_HashSet {
 //		✅ Fast Operations – Provides average O(1) time complexity for insertions and lookups.
 //		✅ Not Thread-Safe – Use Collections.synchronizedSet() for thread safety.
 	//Use Case 1: Removing Duplicates from a List of Names
+	//Used in windowhandles
 	
 	 public static void main(String[] args) {
 	        // List of names with duplicates

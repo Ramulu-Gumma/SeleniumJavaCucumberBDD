@@ -14,7 +14,6 @@ public class JT_02_LinkedList {
 	//		✅ Slower Random Access – O(n) for getting elements vs. O(1) in ArrayList.
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		//Use Case 1: Implementing a Browser's Back & Forward Navigation
 
 		LinkedList<String> history = new LinkedList<>();

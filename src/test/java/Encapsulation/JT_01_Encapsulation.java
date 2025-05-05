@@ -1,12 +1,14 @@
 package Encapsulation;
 
-//Encapsulation is one of the fundamental Object-Oriented Programming (OOP) principles. It is the concept of wrapping or bundling data (fields) and methods (functions) that operate on the data into a single unit called a class. 
+//Encapsulation is one of the fundamental Object-Oriented Programming (OOP) principles. 
+//It is the concept of wrapping or bundling data (fields) and methods (functions) that operate on the data into a single unit called a class. 
 //Encapsulation restricts direct access to some of an object's components, which can protect the integrity of the data and ensure that it is used in a controlled manner.
 
-//In Java, encapsulation is achieved by:
-//Private Fields: Making fields private to restrict direct access from outside the class.
-//Public Methods (Getters and Setters): Providing public methods to access and update the fields safely. These methods are often called getters and setters.
-
+//Key Features of Encapsulation:
+//✅ Data hiding – Keeps class variables private and provides controlled access.
+//✅ Improves maintainability – Changes in implementation don’t affect external code.
+//✅ Enhances security – Prevents unauthorized access to sensitive data.
+//✅ Increases reusability – Encapsulated methods can be reused across the framework.
 //Key Benefits of Encapsulation
 //Data Hiding: Protects the object's internal state by hiding its implementation details.
 //Controlled Access: Allows you to control how the data is accessed and modified.

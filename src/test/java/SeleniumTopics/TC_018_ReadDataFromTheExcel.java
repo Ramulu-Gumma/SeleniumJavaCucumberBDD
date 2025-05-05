@@ -4,23 +4,23 @@ import java.io.FileInputStream;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Cell;
 import java.io.IOException;
+import java.time.Duration;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 
 public class TC_018_ReadDataFromTheExcel {
 
-	
-
 	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
-
-		//Launch chrome Browser
-		WebDriver driver;
-		System.setProperty("webdriver.chrome.driver", "chromedriverpath");
-		driver = new ChromeDriver();
+		
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login"); 
 		driver.manage().window().maximize();
 
 		//Read 2ndrow and 3rd column data from the excel file

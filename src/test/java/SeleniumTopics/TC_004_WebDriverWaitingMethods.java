@@ -1,24 +1,25 @@
 package SeleniumTopics;
 
 import java.time.Duration;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 public class TC_004_WebDriverWaitingMethods {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.setProperty("webdriver.chrome.driver", "chromepath");
+		
+		WebDriverManager.chromedriver().setup();
 		WebDriver driver = new ChromeDriver();
-		//1. get()--Opens a URL in the browser.
-		driver.get("https://www.google.com");
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login"); 
 		driver.manage().window().maximize();
 		
-		//1. Implicit Wait--The Implicit Wait is used to specify the maximum time selenim should wait for an element to appear before throwing a NoSuchElementException. 
+		//1. Implicit Wait--The Implicit Wait is used to specify the maximum time selenium should wait for an element to appear before throwing a NoSuchElementException. 
 		//It is set once and applies to all elements in the test.
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		

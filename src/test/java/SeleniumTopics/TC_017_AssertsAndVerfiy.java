@@ -1,8 +1,12 @@
 package SeleniumTopics;
 
+import java.time.Duration;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -11,11 +15,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class TC_017_AssertsAndVerfiy {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-		// Set up WebDriver
-		WebDriver driver;
-		driver  = new ChromeDriver();
+		
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login"); 
+		driver.manage().window().maximize();
 
 		// Navigate to login page
 		driver.get("https://www.example.com/login");
@@ -27,7 +32,6 @@ public class TC_017_AssertsAndVerfiy {
 		String actualTitle = driver.getTitle();
 		// Hard assertion to check page title
 		Assert.assertEquals(actualTitle, expectedTitle, "Page title mismatch!");
-
 
 		//2. assertNotEquals(expected, actual): Verifies that the expected value is not equal to the actual value.
 		// Hard assertion to ensure the user is not redirected to the login page

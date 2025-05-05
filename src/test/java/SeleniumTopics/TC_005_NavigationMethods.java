@@ -1,17 +1,20 @@
 package SeleniumTopics;
 
+import java.time.Duration;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 public class TC_005_NavigationMethods {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.setProperty("webdriver.chrome.driver", "chromepath");
+		
+		WebDriverManager.chromedriver().setup();
 		WebDriver driver = new ChromeDriver();
-		//1. get()--Opens a URL in the browser.
-		driver.get("https://www.google.com");
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(100));
+		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login"); 
 		driver.manage().window().maximize();
 
 		//2. setSize()-Resizes the browser window to a specific size.

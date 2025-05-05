@@ -5,6 +5,7 @@ import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -13,13 +14,17 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 public class TC_014_FileUploadAndDownload {
 
 	public static void main(String[] args) throws InterruptedException, AWTException {
-		// TODO Auto-generated method stub
-		WebDriver driver;
-		driver = new ChromeDriver();
-		driver.get("https://www.example.com/upload");
+	
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login"); 
+		driver.manage().window().maximize();
 
 		//1: Uploading a File Using SendKeys
 		// Locate the file input element
@@ -29,7 +34,6 @@ public class TC_014_FileUploadAndDownload {
 		// Click the upload button if necessary
 		WebElement uploadButton = driver.findElement(By.id("uploadButton"));
 		uploadButton.click();
-		
 		
 		//2: Handling File Upload Using the Robot Class
 		// Locate the file input element and click it to open the file dialog

@@ -1,7 +1,8 @@
 package Inheritance;
 
 //Single Inheritance: A subclass inherits from only one superclass.
-//When to use: When you have a base class that defines common features for a specific category of machines, and you need to create a more specialized subclass.
+//When to use: When you have a base class that defines common features for a specific category of machines,
+//and you need to create a more specialized subclass.
 
 //Parent class
 class Machine {

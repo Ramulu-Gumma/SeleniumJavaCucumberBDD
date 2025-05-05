@@ -32,7 +32,7 @@ public class JT_001_VariablesAndDataTypes {
         System.out.println("Scores: " + scores[0] + ", " + scores[1] + ", " + scores[2]);
 
        // Primitive types store simple data like numbers and characters.
-       // Reference types store complex data like strings, arrays, and objects.
+       // Non primitive types store complex data like strings, arrays, and objects.
 	}
 
 }

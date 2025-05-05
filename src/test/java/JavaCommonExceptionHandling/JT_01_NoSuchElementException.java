@@ -10,7 +10,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 // NoSuchElementException is a common exception in Selenium WebDriver that occurs when an element cannot be found on a web page. This usually happens when:
-//
 //	The element is not present in the DOM.
 //	The locator used to find the element is incorrect or outdated.
 //	The element is not yet loaded or visible when the script tries to access it.

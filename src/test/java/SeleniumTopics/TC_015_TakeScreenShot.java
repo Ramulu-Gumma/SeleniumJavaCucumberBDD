@@ -1,33 +1,27 @@
 package SeleniumTopics;
+		
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.concurrent.TimeUnit;
-
 import org.apache.commons.io.FileUtils;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
 public class TC_015_TakeScreenShot {
 
 	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
-
-
-		//Launch chrome Browser
-		WebDriver driver;
-		System.setProperty("webdriver.chrome.driver", "chromedriverpath");
-		driver = new ChromeDriver();
+        //Launch chrome Browser
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver = new ChromeDriver();
 		driver.manage().window().maximize();
-		
+		driver.get("");
+		driver.findElement(By.xpath(""));
 		
 		//Take Screenshot
 		TakesScreenshot screenShot = (TakesScreenshot)driver;

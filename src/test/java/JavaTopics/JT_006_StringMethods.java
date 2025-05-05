@@ -8,7 +8,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class JT_006_StringMethods {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		
 		//1. length() Method--This method returns the length of the string (number of characters).
 		String greeting = "Hello, World!";
@@ -40,7 +39,6 @@ public class JT_006_StringMethods {
 		System.out.println("Uppercase: " + str.toUpperCase());
 		System.out.println("Lowercase: " + str.toLowerCase());
 
-		
 		//6. replace() Method--This method replaces all occurrences of a substring within the string with a new substring.
 		String sentence = "I love Java!";
 		System.out.println(sentence.replace("Java", "Programming"));
@@ -103,6 +101,7 @@ public class JT_006_StringMethods {
 		    System.out.println("Both buttons are different objects in memory.");
 		}
 
+		
 		if (button1.getText().equals(button2.getText())) {
 		    System.out.println("Both buttons have the same text.");
 		} else {

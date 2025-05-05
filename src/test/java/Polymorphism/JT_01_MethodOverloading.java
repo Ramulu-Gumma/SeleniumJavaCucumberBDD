@@ -9,51 +9,34 @@ package Polymorphism;
 
 //Parent class representing glass cutting machine
 class GlassCuttingMachine {
+	 // Method for Admin access
+    public void grantAccess(String role) {
+        System.out.println(role + " has full system access.");
+    }
 
-	// Method to cut glass based on dimensions
-	void cut(double width, double height) {
-		System.out.println("Cutting glass with width: " + width + " and height: " + height);
-	}
+    // Method for PlantAdmin access
+    public void grantAccess(String role, int plantId) {
+        System.out.println(role + " has access to Plant ID: " + plantId);
+    }
 
-	// Overloaded method to cut glass based on thickness
-	void cut(double width, double height, double thickness) {
-		System.out.println("Cutting glass with width: " + width + ", height: " + height + " and thickness: " + thickness);
-	}
-
-	// Overloaded method to cut colored glass based on color
-	void cut(double width, double height, String color) {
-		System.out.println("Cutting " + color + " glass with width: " + width + " and height: " + height);
-	}
-
-	// Overloaded method to cut tempered glass
-	void cut(double width, double height, boolean isTempered) {
-		if (isTempered) {
-			System.out.println("Cutting tempered glass with width: " + width + " and height: " + height);
-		} else {
-			System.out.println("Cutting regular glass with width: " + width + " and height: " + height);
-		}
-	}
+    // Method for General User access
+    public void grantAccess(String role, String department) {
+        System.out.println(role + " has access to " + department + " department only.");
+    }
 }
 
-//Main class to demonstrate method overloading
 public class JT_01_MethodOverloading {
-	
-	public static void main(String[] args) {
-		GlassCuttingMachine machine = new GlassCuttingMachine();
+    public static void main(String[] args) {
+    	GlassCuttingMachine access = new GlassCuttingMachine();
 
-		// Cutting glass by dimensions
-		machine.cut(5.0, 7.0);
+        // Admin Access
+        access.grantAccess("Admin");
 
-		// Cutting glass by dimensions and thickness
-		machine.cut(5.0, 7.0, 0.5);
+        // Plant Admin Access
+        access.grantAccess("PlantAdmin", 101);
 
-		// Cutting colored glass
-		machine.cut(5.0, 7.0, "Blue");
-
-		// Cutting tempered glass
-		machine.cut(5.0, 7.0, true);  // for tempered glass
-		machine.cut(5.0, 7.0, false); // for regular glass
-	}
+        // General User Access
+        access.grantAccess("User", "Production");
+    }
 }
-
 

@@ -1,20 +1,23 @@
 package SeleniumTopics;
 
+import java.time.Duration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 public class TC_008_HandlingDropDowns {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-		WebDriver driver; 
-		driver = new ChromeDriver();
-		driver.get("https://www.example.com");  // Replace with the actual URL
-
+		
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login"); 
+		driver.manage().window().maximize();
 		// Locate the dropdown element
 		WebElement dropdown = driver.findElement(By.id("dropdownId"));
 		// Create a Select object to interact with the dropdown

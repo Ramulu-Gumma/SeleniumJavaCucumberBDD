@@ -1,18 +1,22 @@
 package SeleniumTopics;
 
+import java.time.Duration;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 public class TC_007_HandlingAlerts {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-		WebDriver driver; 
-		driver = new ChromeDriver();
-		driver.get("https://www.example.com");  // Replace with the actual URL
+		
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login"); 
+		driver.manage().window().maximize();
 
 		// Trigger the alert (e.g., by clicking a button)
 		driver.findElement(By.id("simpleAlertButton")).click();

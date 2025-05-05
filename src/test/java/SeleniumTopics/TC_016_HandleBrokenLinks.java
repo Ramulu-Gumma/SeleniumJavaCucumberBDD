@@ -3,6 +3,7 @@ package SeleniumTopics;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -10,61 +11,52 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 public class TC_016_HandleBrokenLinks {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
-		// Initialize WebDriver
-        WebDriver driver = new ChromeDriver();
-        driver.get("https://www.example.com");  // Replace with the actual URL you want to test
+		// Setup WebDriver
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
 
-        // Check anchor links (<a>)
-        checkLinks(driver, "a");
+		// Open target website
+		driver.get("https://amazon.in"); // Replace with the actual URL
 
-        // Check image links (<img>)
-        checkLinks(driver, "img");
+		// Get all links from the webpage
+		List<WebElement> links = driver.findElements(By.tagName("a"));
+		System.out.println("Total links found: " + links.size());
 
-        // Check script links (<script>)
-        checkLinks(driver, "script");
+		List<String> urlList = new ArrayList<String>();
+		for(WebElement ele: links) {
+			String url = ele.getAttribute("href");
+			urlList.add(url);
+			//checkBrokenLink(url);
+		}
+		long stTime = System.currentTimeMillis();
+		urlList.parallelStream().forEach(e->checkBrokenLink(e));
+		//urlList.stream().forEach(e->checkBrokenLink(e));
+		long endTime = System.currentTimeMillis();
+		System.out.println("total time taken:" +(endTime-stTime));
+		driver.quit();
+	}
 
-        // Close the browser
-        driver.quit();
-    }
+	public static void checkBrokenLink(String linkUrl) {
+		try {
+			URL url = new URL(linkUrl);
+			HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+			httpURLConnection.setRequestMethod("HEAD");
+			httpURLConnection.setConnectTimeout(5000);
+			httpURLConnection.connect();
 
-    // Method to check all links of a given tag
-    public static void checkLinks(WebDriver driver, String tagName) {
-        // Fetch all elements by tagName (e.g., "a", "img", "script")
-        List<WebElement> elements = driver.findElements(By.tagName(tagName));
-
-        // Iterate through each element and extract the href or src attribute
-        for (WebElement element : elements) {
-            String url = element.getAttribute("href") != null ? element.getAttribute("href") : element.getAttribute("src");
-            
-            // Check if the URL is not null or empty
-            if (url != null && !url.isEmpty()) {
-                checkLink(url);
-            }
-        }
-    }
-
-    // Method to check the link status using HTTP connection
-    public static void checkLink(String linkUrl) {
-        try {
-            // Create a HttpURLConnection object to get the status of the link
-            HttpURLConnection connection = (HttpURLConnection) new URL(linkUrl).openConnection();
-            connection.setRequestMethod("HEAD");
-            connection.connect();
-            
-            // Get the HTTP status code
-            int responseCode = connection.getResponseCode();
-            if (responseCode >= 400) {
-                System.out.println("Broken link: " + linkUrl + " | Response Code: " + responseCode);
-            } else {
-                System.out.println("Valid link: " + linkUrl + " | Response Code: " + responseCode);
-            }
-        } catch (IOException e) {
-            System.out.println("Error checking link: " + linkUrl + " | Exception: " + e.getMessage());
-        }
-    }
+			if (httpURLConnection.getResponseCode()>= 400) {
+				System.out.println("Broken Link: " + linkUrl + " | HTTP Response Code: " + httpURLConnection.getResponseMessage());
+			} else {
+				System.out.println("Valid Link: " + linkUrl + " | HTTP Response Code: " + httpURLConnection.getResponseMessage());
+			}
+		} catch (IOException e) {
+			System.out.println("Error checking link: " + linkUrl + " | Exception: " + e.getMessage());
+		}
+	}
 }
